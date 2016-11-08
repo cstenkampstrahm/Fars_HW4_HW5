@@ -1,0 +1,72 @@
+---
+title: Reproduced Analysis of FARS data
+author: 
+date: 
+output: word_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+library(knitr)
+library(ggthemes)
+load("/Users/Chloe/Project_1/data/clean_fars.RData")
+source("/Users/Chloe/Project_1/R/fars_functions.R")
+```
+
+
+## Results
+
+**Percentages of drivers testing positive by drug type, sex, and year group**
+
+```{r}
+knitr::kable(table_1, col.names = c("Drug type", "F 1999-2002",
+                             "F 2003-2006", "F 2007-2010",
+                             "M 1999-2002", "M 2003-2006",
+                             "M 2007-2010"))
+```
+
+**Figure 1: Prevalence of nonalcoholic drugs in fatally injured drivers by year and age group**
+
+```{r fig.width = 8, fig.height = 5}
+graph_1_fars
+# code for graph in function script
+```
+
+**Figure 2: Prevalence of nonalcoholic drugs in fatally injured drivers by year and drug type** 
+
+```{r fig.width=8, fig.height = 5}
+graph_2_fars
+# code for graph in function script
+```
+
+**Figure 3: Prevalence of nonalcoholic drugs in fatally injured drivers by year and age group**
+
+```{r fig.width = 8, fig.height = 5}
+graph_3_fars
+# code for graph in function script
+```
+
+**Prevalence of drugs in fatally injured drivers for 1999 and 2010 by drug type**
+
+```{r}
+knitr::kable(table2, col.names = c("Drug Type", "1999", "2010"))
+```
+
+**Statistics for testing for trend in prevalence of drugs over study years by drug type using Cochran-Armitage trend test**
+
+```{r}
+knitr::kable(drug_trend_tests_ca)
+```
+
+**Statistics for testing for trend in prevalence of drugs over study years by drug type using Wald test of logistic regression coefficient for 'year'**
+
+```{r}
+knitr::kable(drug_trend_tests_log_reg)
+```
+
+
